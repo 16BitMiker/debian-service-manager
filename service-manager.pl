@@ -97,8 +97,8 @@ my $cmds =
     # Display the service's configuration file
     { conf    => q|systemctl cat SERVICE| },
 
-    # Show memory usage of the service
-    { mem     => q|sudo systemd-cgroup-show SERVICE| },
+    # Show resource usage of the service
+    { resources => q|sudo systemctl status SERVICE --no-pager | grep -E '(Memory|CPU)'| },
 
     # Reload the service configuration without stopping and starting
     { reload  => q|sudo systemctl reload SERVICE| },
