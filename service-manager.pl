@@ -193,7 +193,7 @@ RUN:
     say BOLD qq|CMD MENU ${my_service}: B(ye) R(edo)|, RESET;
     $$dt{line}();
 
-    for my $key (sort keys @{$cmds})
+    for my $key (keys @{$cmds})
     {
         next if $key == 0;
 
@@ -229,6 +229,10 @@ RUN:
     typewriter( $run );
     say RESET q||;
     system $run;
+    
+    print q|> Press enter to continue...|;
+    <STDIN>;
+    
     goto RUN;
 }
 
