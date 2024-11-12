@@ -98,7 +98,7 @@ my $cmds =
     { conf    => q|systemctl cat SERVICE| },
 
     # Show resource usage of the service
-    { resources => q|sudo systemctl status SERVICE --no-pager | grep -E '(Memory|CPU)'| },
+    { resources => q`sudo systemctl status SERVICE --no-pager | grep -E '(Memory|CPU)'` },
 
     # Reload the service configuration without stopping and starting
     { reload  => q|sudo systemctl reload SERVICE| },
