@@ -56,18 +56,66 @@ my $dt = {
 
 };
 
-
 my $cmds =
 [
+    # List all service unit files
     { list    => q|sudo systemctl list-unit-files --type=service --all --no-pager| },
+
+    # View service logs from today
     { today   => q|sudo journalctl -u SERVICE --since today --no-pager| },
+
+    # Follow service logs in real-time
     { follow  => q|sudo journalctl -u SERVICE -f --no-pager| },
+
+    # View all logs for the service
     { all     => q|sudo journalctl -u SERVICE --no-pager| },
+
+    # Start the service
     { start   => q|systemctl start SERVICE| },
+
+    # Stop the service
     { stop    => q|systemctl stop SERVICE| },
+
+    # Restart the service
     { restart => q|systemctl restart SERVICE| },
+
+    # Check the status of the service
     { status  => q|systemctl status SERVICE| },
+
+    # View only error, critical, and alert level messages for the service
+    { errors  => q|sudo journalctl -u SERVICE -p err..alert --no-pager| },
+
+    # Display the most recent 50 log entries for the service
+    { recent  => q|sudo journalctl -u SERVICE -n 50 --no-pager| },
+
+    # List all failed systemd units
+    { failed  => q|sudo systemctl --failed --no-pager| },
+
+    # Show dependencies of the service
+    { deps    => q|systemctl list-dependencies SERVICE| },
+
+    # Display the service's configuration file
+    { conf    => q|systemctl cat SERVICE| },
+
+    # Show memory usage of the service
+    { mem     => q|sudo systemd-cgroup-show SERVICE| },
+
+    # Reload the service configuration without stopping and starting
+    { reload  => q|sudo systemctl reload SERVICE| },
+
+    # Enable the service to start on boot
+    { enable  => q|sudo systemctl enable SERVICE| },
+
+    # Disable the service from starting on boot
+    { disable => q|sudo systemctl disable SERVICE| },
+
+    # Completely prevent the service from being started
+    { mask    => q|sudo systemctl mask SERVICE| },
+
+    # Reverse the masking of a service
+    { unmask  => q|sudo systemctl unmask SERVICE| },
 ];
+
 
 my $choice = undef;
 my $my_service = '';
