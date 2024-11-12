@@ -22,15 +22,13 @@ A Perl-based interactive CLI tool for managing SystemD services with ease. This 
 
 ## Installation
 
-1. Clone this repository:
+Clone this repository:
 
 ```
-git clone [repository-url]
+git clone https://github.com/16BitMiker/debian-service-manager
 ```
 
-
-
-1. Make the script executable:
+Make the script executable:
 
 ```
 chmod +x service-manager.pl
